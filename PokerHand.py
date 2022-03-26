@@ -177,7 +177,7 @@ class PokerHand():
                     i = 0
                     hand1 = list(self.groupCards.keys())
                     hand2 = list(self.groupCards.keys())
-                    while i in range(4):
+                    while i in range(5):
                         if hand1[i] == hand2[i]:
                             pass
                             if i == 4:
