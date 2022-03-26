@@ -184,10 +184,8 @@ class PokerHand():
                                 return("TIE")
                         elif hand1[i] > hand2[i]:
                             return("WIN")
-                            break
                         elif hand1[i] < hand2[i]:
                             return("LOSS")
-                            break
                         i +=1
                     
             elif self.points == 5:
@@ -258,7 +256,7 @@ class PokerHand():
                     elif self.highCard < highCard2:
                         return("LOSS")
                     else:
-                        for i in range(4):
+                        for i in range(5):
                             if keys1[i] > keys2[i]:
                                 return("WIN")
                             elif keys1[i] < keys2[i]:
@@ -271,9 +269,22 @@ class PokerHand():
 
             
             elif self.points == 1:
-                    if self.highCard > highCard2:
-                        return("WIN")
-                    elif self.highCard < highCard2:
-                        return("LOSS")
-                    else:
-                        return("TIE")
+                keys1 = list(self.groupCards.keys())
+                values1 = list(self.groupCards.values())
+                keys2 = list(groupCards2.keys())
+                values2 = list(groupCards2.values())
+                if self.highCard > highCard2:
+                    return("WIN")
+                elif self.highCard < highCard2:
+                    return("LOSS")
+                else:
+                    for i in range(5):
+                        if keys1[i] > keys2[i]:
+                            return("WIN")
+                        elif keys1[i] < keys2[i]:
+                            return("LOSS")
+                        else:
+                            if i == 4:
+                                return("TIE")
+                            else:
+                                pass
