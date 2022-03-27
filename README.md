@@ -14,7 +14,7 @@ python main.py
 4. Exit
 (1,2,3 or 4)=>
 ```
-Choose option 3 and then option 2 if you are interested only if the result the program is returning is right with the ground-truth given, or choose 1 to see it in a more user-friendly way :wink:.
+Choose option 3 and then option 2 if you are interested only if the result the program is returning is right with the ground-truth given, or choose option 3 and then option 1 to see it in a more user-friendly way :wink:.
 
 # About Documentation
 You can obtain more detailed APIs documentation here in github on the [wiki's tab of this repository](https://github.com/gustavobraga98/desafio-python-datah/wiki).
