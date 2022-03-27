@@ -54,7 +54,7 @@ class Dealer():
             self.hand2 = PokerHand(pokerHand2)
             self.hand2.sort_hand()
             self.hand2.analyse_hand()
-            self.result = self.hand1.compare_with(self.hand2.groupCards,self.hand2.points,self.hand2.highCard)
+            self.result = self.hand1.compare_with(self.hand2)
             if verbose == True:         #This works just for the "run_tests" in the menuClass. \
                 self.display_game()     #If the user asks to display the game it will display it user-friendly \
                 return (self.result)    #Both hands and the result 

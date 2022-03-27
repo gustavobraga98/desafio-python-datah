@@ -1,4 +1,6 @@
 from collections import Counter
+
+from sympy import sec
 class PokerHand():
 #This class instantiate a poker Hand containing all cards that compose it, \
 #and a few methods like formatting in a user-friendly way, or comparing it \
@@ -128,46 +130,46 @@ class PokerHand():
                 self.same_suits = False
                 break
 
-    def compare_with(self,groupCards2,points2,highCard2):
+    def compare_with(self,secondHand):
         #This function altough long can be simplifies as such: \
         #If the categorial point of hand1 is higher than hand 2 \
         #Then Hand1 wins, otherwise hand1 loses. \
         #And if the categorical point of both hands are equal \
         #Then the program proceeds to find the right method to \
         #Define wich hand wins
-        if self.points > points2:
+        if self.points > secondHand.points:
             return("WIN")
-        elif self.points < points2:
+        elif self.points < secondHand.points:
             return("LOSS")
         else: #Here begins the cases where categorical points are the same.
               # E.g pair vs pair
             if self.points == 10:
                 return("TIE")
             elif self.points == 9:
-                if self.highCard > highCard2:
+                if self.highCard > secondHand.highCard:
                     return("WIN")
-                elif self.highCard < highCard2:
+                elif self.highCard < secondHand.highCard:
                     return("LOSS")
                 else:
                     return("TIE")
             elif self.points == 8:
-                if self.highCard > highCard2:
+                if self.highCard > secondHand.highCard:
                     return("WIN")
-                elif self.highCard < highCard2:
+                elif self.highCard < secondHand.highCard:
                     return("LOSS")
                 else:
                     return("TIE")
             elif self.points == 7:
-                if self.highCard > highCard2:
+                if self.highCard > secondHand.highCard:
                     return("WIN")
-                elif self.highCard < highCard2:
+                elif self.highCard < secondHand.highCard:
                     return("LOSS")
                 else:
                     return("TIE")
             elif self.points == 6:
-                if self.highCard > highCard2:
+                if self.highCard > secondHand.highCard:
                     return("WIN")
-                elif self.highCard < highCard2:
+                elif self.highCard < secondHand.highCard:
                     return("LOSS")
                 else:
                     #Here is a little tricky because if the the high card of \
@@ -176,7 +178,7 @@ class PokerHand():
                     #greater in one hand. If that is not possible, than it's a TIE.
                     i = 0
                     hand1 = list(self.groupCards.keys())
-                    hand2 = list(self.groupCards.keys())
+                    hand2 = list(secondHand.groupCards.keys())
                     while i in range(5):
                         if hand1[i] == hand2[i]:
                             pass
@@ -189,17 +191,17 @@ class PokerHand():
                         i +=1
                     
             elif self.points == 5:
-                if self.highCard > highCard2:
+                if self.highCard > secondHand.highCard:
                     return("WIN")
-                elif self.highCard < highCard2:
+                elif self.highCard < secondHand.highCard:
                     return("LOSS")
                 else:
                     return("TIE")
             elif self.points == 4:
                 keys1 = list(self.groupCards.keys())
                 values1 = list(self.groupCards.values())
-                keys2 = list(groupCards2.keys())
-                values2 = list(groupCards2.values())
+                keys2 = list(secondHand.groupCards.keys())
+                values2 = list(secondHand.groupCards.values())
                 card1 = keys1[values1.index(3)]
                 card2 = keys2[values2.index(3)]
                 if card1 > card2:
@@ -210,8 +212,8 @@ class PokerHand():
             elif self.points == 3:
                 keys1 = list(self.groupCards.keys())
                 values1 = list(self.groupCards.values())
-                keys2 = list(groupCards2.keys())
-                values2 = list(groupCards2.values())
+                keys2 = list(secondHand.groupCards.keys())
+                values2 = list(secondHand.groupCards.values())
                 firstPair1 = keys1[values1.index(2)]
                 firstPair2 = keys2[values2.index(2)]
 
@@ -233,17 +235,17 @@ class PokerHand():
                     elif secondPair1 < secondPair2:
                         return("LOSS")
                     else:
-                        if self.highCard > highCard2:
+                        if self.highCard > secondHand.highCard:
                             return("WIN")
-                        elif self.highCard < highCard2:
+                        elif self.highCard < secondHand.highCard:
                             return("LOSS")
                         else:
                             return("TIE")
             elif self.points == 2:
                 keys1 = list(self.groupCards.keys())
                 values1 = list(self.groupCards.values())
-                keys2 = list(groupCards2.keys())
-                values2 = list(groupCards2.values())
+                keys2 = list(secondHand.groupCards.keys())
+                values2 = list(secondHand.groupCards.values())
                 pair1 = keys1[values1.index(2)]
                 pair2 = keys2[values2.index(2)]
                 if pair1 > pair2:
@@ -251,9 +253,9 @@ class PokerHand():
                 elif pair1 < pair2:
                     return("LOSS")
                 else:
-                    if self.highCard > highCard2:
+                    if self.highCard > secondHand.highCard:
                         return("WIN")
-                    elif self.highCard < highCard2:
+                    elif self.highCard < secondHand.highCard:
                         return("LOSS")
                     else:
                         for i in range(5):
@@ -271,11 +273,11 @@ class PokerHand():
             elif self.points == 1:
                 keys1 = list(self.groupCards.keys())
                 values1 = list(self.groupCards.values())
-                keys2 = list(groupCards2.keys())
-                values2 = list(groupCards2.values())
-                if self.highCard > highCard2:
+                keys2 = list(secondHand.groupCards.keys())
+                values2 = list(secondHand.groupCards.values())
+                if self.highCard > secondHand.highCard:
                     return("WIN")
-                elif self.highCard < highCard2:
+                elif self.highCard < secondHand.highCard:
                     return("LOSS")
                 else:
                     for i in range(5):
